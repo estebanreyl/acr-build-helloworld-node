@@ -1,0 +1,14 @@
+# Should Fail
+version: v1.0.0
+steps:
+  # Build target image
+  - build: -t $Registry/hello-world:$ID -f Dockerfile .
+  # Run image
+  - cmd: -t $Registry/hello-world:$ID
+    id: test
+    detach: true
+    ports: ["8080:80"]
+  - cmd: docker stop test
+  - push:
+      - "$Registry/hello-world:$ID"
+# Push image

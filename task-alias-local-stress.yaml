@@ -1,0 +1,17 @@
+alias:
+  directive: 🐳
+  src:
+    - ./alphanumeric-external.yaml
+version: v1.1.0
+steps:
+  # Build target image
+  - build: -🐳t $Registry/hello-world:{{.Run.ID}} -f Dockerfile .
+  # Run image
+  - cmd: -🐳t $Registry/hello-world:{{.Run.ID}}
+    id: 🐳t🐳e🐳s🐳t🐳c🐳r🐳a🐳z🐳y
+    detach: 🐳t🐳r🐳u🐳e
+    ports: ["8080:80"]
+  - cmd: 🐳d🐳o🐳c🐳k🐳e🐳r 🐳s🐳t🐳o🐳p 🐳t🐳e🐳s🐳t
+  - push:
+      - "{{.Run.Registry}}/hello-world:{{.Run.ID}}"
+# Push image
